@@ -1,47 +1,63 @@
-# Svelte + TS + Vite
+# Sistema de Seguimiento de Incidencias
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+Aplicacion web funcional para el registro, gestion y seguimiento de incidencias, desarrollada como parte del reto tecnico.
 
-## Recommended IDE Setup
+## Enlace al proyecto publicado
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+*   URL en produccion: https://incidencias-delta.vercel.app/
+    
 
-## Need an official Svelte framework?
+## Tiempo dedicado y herramientas
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+*   Tiempo estimado de desarrollo: Aproximadamente 1.5 horas.
+    
+*   Tecnologias principales: Svelte, TypeScript, Vite y Dexie.js (IndexedDB).
+    
+*   Herramientas de apoyo: Inteligencia Artificial utilizada como asistente para agilizar la maquetacion CSS y consultar dudas sintacticas.
+    
 
-## Technical considerations
+## Decisiones de arquitectura y diseno
 
-**Why use this over SvelteKit?**
+Para esta primera version, la prioridad fue entregar una solucion solida, funcional y enfocada en el alcance minimo indispensable antes de invertir tiempo en detalles secundarios:
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+1.  Persistencia de datos en navegador (Dexie.js): Se utilizo Dexie.js para interactuar con IndexedDB de forma estructurada. Esto garantiza que la informacion persista localmente en el navegador sin perder reactividad. En una etapa posterior, la evolucion natural seria implementar una API REST con una base de datos relacional en backend.
+    
+2.  Diseño en vista unica: Al tratarse de una prueba tecnica orientada a la agilidad, se opto por una arquitectura basada en componentes modulares (App.svelte, Manual.svelte, entre otros) dentro de una sola pantalla en lugar de implementar un sistema de rutas, lo que facilito iterar con mayor rapidez.
+    
+3.  Flujo unificado (Usuario / Soporte): En lugar de separar roles de usuario (reportador y personal de soporte), se integro la creacion, filtrado, edicion y cambio de estados en una vista centralizada para simplificar la experiencia y reducir tiempos de desarrollo.
+    
+4.  Manual de operacion integrado: Se incluyo un componente de ayuda dentro de la propia aplicacion para explicar su funcionamiento sin requerir documentacion externa.
+    
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+## Instrucciones para ejecutar en entorno local
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+### Requisitos previos
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+*   Tener instalada la version mas reciente de Node.js (probado y desarrollado en Node.js v26.11).
+    
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+### Pasos de ejecucion
 
-**Why include `.vscode/extensions.json`?**
+1.  Clonar el repositorio:
+    git clone https://github.com/MiguelQuintana01/Incidencias
+    cd Incidencias
+    
+2.  Instalar dependencias:
+    npm install
+    
+3.  Iniciar el servidor de desarrollo:
+    npm run dev
+    
+4.  Abrir la direccion indicada en el navegador (usualmente [http://localhost:5173](http://localhost:5173)).
+    
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+## Funcionalidades omitidas y futuras mejoras
 
-**Why enable `allowJs` in the TS template?**
+Para cumplir con el margen de tiempo y asegurar la calidad del alcance minimo, se omitieron intencionalmente los siguientes puntos:
 
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+*   Pruebas automatizadas sobre la logica principal.
+    
+*   Separacion avanzada de responsabilidades en la arquitectura.
+    
+*   Manejo de errores y validaciones adicionales en el formulario.
+    

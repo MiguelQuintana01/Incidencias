@@ -1,11 +1,4 @@
-<script lang="ts">
-  // Componente para mostrar el Manual de Usuario del Sistema de Gestión de Incidencias
-  // Este componente asume el uso de PicoCSS en el layout principal.
 
-  function goToHome() {
-    window.location.href = "/";
-  }
-</script>
 
 <div class="manual-container">
   <header class="header">
