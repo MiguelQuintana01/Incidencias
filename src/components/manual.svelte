@@ -10,9 +10,6 @@
       <strong>Aviso Importante:</strong> Los datos de las incidencias se almacenan localmente en el navegador web en uso.
     </div>
     
-    <button class="back-button" on:click={goToHome}>
-      &larr; Volver al Inicio
-    </button>
   </header>
 
   <section class="content-section">
