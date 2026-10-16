@@ -8,7 +8,7 @@ Aplicación web funcional para el registro, gestión y seguimiento de incidencia
 
 ## Tiempo dedicado y herramientas
 
-* Tiempo estimado de desarrollo (código): aproximadamente 1.5 horas.
+* Tiempo estimado de desarrollo (código): aproximadamente 2 horas a 2.5 horas.
 * Tecnologías principales: Svelte, TypeScript, Vite y Dexie.js (IndexedDB).
 * Herramientas de apoyo: varios modelos de Inteligencia Artificial, utilizados a través de OpenRouter y Ollama (el detalle está en la sección "Uso de IA").
 
