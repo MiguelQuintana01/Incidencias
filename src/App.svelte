@@ -1,5 +1,4 @@
 <script lang="ts">
-  // Ubicacion sugerida: src/App.svelte
   import {
     ESTADOS,
     PRIORIDADES,
@@ -9,6 +8,7 @@
     type PrioridadNombre,
   } from "./lib/db/incidencias-db";
 
+  import Manual from './components/manual.svelte';
   /* ---------- Consultas en vivo (liveQuery cumple el contrato de store) ---------- */
 
   const todas = repo.observar(); // sin filtro: solo para los contadores
@@ -228,6 +228,8 @@
     </div>
   </div>
 </main>
+
+<Manual/>
 
 <style>
   :global(body) {
