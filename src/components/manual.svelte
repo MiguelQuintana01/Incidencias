@@ -1,5 +1,3 @@
-
-
 <div class="manual-container">
   <header class="header">
     <h1>Manual de Usuario: Sistema de Gestión de Incidencias</h1>
@@ -17,7 +15,7 @@
     <ul class="feature-list">
       <li><strong>Registro de Incidencias:</strong> Permite la creación de nuevos registros especificando Título, Descripción y Prioridad.</li>
       <li><strong>Visualización de Datos:</strong> Muestra un listado estructurado de todos los incidentes registrados.</li>
-      <li><strong>Segmentación y Filtros:</strong> Permite filtrar la lista de incidentes por Estado (por ejemplo, Abierto o Resuelto) y por Prioridad (Alta, Media, Baja).</li>
+      <li><strong>Segmentación y Filtros:</strong> Permite filtrar la lista de incidentes por Estado (Nueva, En proceso o Resuelta) y por Prioridad (Alta, Media, Baja).</li>
       <li><strong>Administración de Registros:</strong> Permite la edición de información, actualización del estado operativo y eliminación de registros.</li>
     </ul>
 
@@ -30,7 +28,7 @@
         <li><strong>Título:</strong> Ingrese un título representativo y preciso sobre el incidente.</li>
         <li><strong>Descripción:</strong> Proporcione una explicación detallada en el campo correspondiente.</li>
         <li><strong>Prioridad:</strong> Seleccione el nivel de urgencia adecuado (Alta, Media o Baja).</li>
-        <li>Haga clic en el botón <strong>"Registrar incidente"</strong>.</li>
+        <li>Haga clic en el botón <strong>"Registrar incidencia"</strong>.</li>
         <li>El incidente se agregará automáticamente al listado principal.</li>
       </ol>
     </article>
@@ -51,7 +49,7 @@
       <p>Permite reflejar el flujo de trabajo y progreso del incidente:</p>
       <ol>
         <li>Ubique el registro correspondiente dentro del listado.</li>
-        <li>En la columna <strong>"Estado"</strong>, seleccione el botón relativo al nuevo estado requerimiento (por ejemplo, cambiar de "Abierto" a "Resuelto").</li>
+        <li>En el grupo de botones de <strong>Estado</strong> de la incidencia, seleccione el botón del nuevo estado (por ejemplo, cambiar de "Nueva" a "En proceso" o a "Resuelta").</li>
         <li>El sistema actualizará el estado de forma inmediata y aplicará el indicador visual pertinente.</li>
       </ol>
     </article>
@@ -70,7 +68,7 @@
       <h3>2.5. Filtrado de Registros</h3>
       <p>Permite segmentar la información para facilitar la consulta:</p>
       <ol>
-        <li><strong>Filtro por Estado:</strong> En la barra de herramientas, seleccione el botón correspondiente al estado requerido (por ejemplo, "Abierto").</li>
+        <li><strong>Filtro por Estado:</strong> En la barra de herramientas, seleccione el botón correspondiente al estado requerido (por ejemplo, "Nueva", "En proceso" o "Resuelta").</li>
         <li><strong>Filtro por Prioridad:</strong> Utilice el selector de <strong>Prioridad</strong> para desplegar únicamente las incidencias clasificadas bajo el nivel seleccionado.</li>
         <li>Para restablecer la vista completa, seleccione la opción <strong>"Todas"</strong> en los controles de filtro correspondientes.</li>
       </ol>
@@ -82,39 +80,55 @@
   </footer>
 </div>
 
+
 <style>
-  /* Estilos para el contenedor del manual */
+  /* Paleta propia, igual a la de App.svelte (el manual vive fuera de .app, por eso se redefine aquí) */
   .manual-container {
+    --superficie: #ffffff;
+    --tinta: #17222e;
+    --suave: #556577;
+    --regla: #cdd5dd;
+    --fondo-suave: #edf0f3;
+    --acento: #1d3b5c;
+
+    box-sizing: border-box;
+    width: calc(100% - 2rem);
     max-width: 800px;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding: 2rem;
-    border: 1px solid var(--pico-border);
-    border-radius: var(--pico-border-radius);
-    box-shadow: var(--pico-shadow);
+    background: var(--superficie);
+    color: var(--tinta);
+    border: 1px solid var(--regla);
+    border-radius: 6px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    text-align: left;
   }
 
   .header {
     text-align: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--pico-border);
+    border-bottom: 1px solid var(--regla);
   }
 
   .header h1 {
     font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--pico-primary);
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+    color: var(--acento);
   }
 
   .subtitle {
-    color: var(--pico-text-secondary);
+    margin: 0;
+    color: var(--suave);
   }
 
   .disclaimer {
     margin-top: 1rem;
     padding: 0.75rem 1rem;
-    background-color: var(--pico-background-alt);
-    border-left: 4px solid var(--pico-primary);
+    background-color: var(--fondo-suave);
+    border-left: 4px solid var(--acento);
     text-align: left;
     font-size: 0.95rem;
   }
@@ -126,7 +140,7 @@
   h2 {
     margin-top: 2rem;
     margin-bottom: 1rem;
-    border-bottom: 2px solid var(--pico-border);
+    border-bottom: 2px solid var(--regla);
     padding-bottom: 0.5rem;
     font-size: 1.5rem;
   }
@@ -134,16 +148,20 @@
   .guide-step {
     margin-bottom: 1.5rem;
     padding: 1.25rem;
-    border: 1px solid var(--pico-border-alt);
-    border-radius: var(--pico-border-radius);
-    background-color: var(--pico-card-background-color);
+    border: 1px solid var(--regla);
+    border-radius: 6px;
+    background-color: var(--superficie);
   }
 
   .guide-step h3 {
     margin-top: 0;
     margin-bottom: 0.75rem;
     font-size: 1.2rem;
-    color: var(--pico-primary-dark);
+    color: var(--acento);
+  }
+
+  .guide-step p {
+    margin: 0 0 0.75rem;
   }
 
   .feature-list {
@@ -156,6 +174,7 @@
   }
 
   .guide-step ol {
+    margin: 0;
     padding-left: 1.25rem;
   }
 
@@ -167,30 +186,12 @@
     text-align: center;
     margin-top: 3rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--pico-border);
+    border-top: 1px solid var(--regla);
     font-size: 0.85rem;
-    color: var(--pico-text-secondary);
+    color: var(--suave);
   }
 
-  /* Botón flotante para regresar */
-  .back-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    width: auto;
-    padding: 0.6rem 1.2rem;
-    background-color: var(--pico-primary);
-    color: var(--pico-text-on-primary);
-    border: none;
-    border-radius: var(--pico-border-radius);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-  }
-
-  .back-button:hover {
-    background-color: var(--pico-primary-dark);
-    transform: translateY(-2px);
+  footer p {
+    margin: 0;
   }
 </style>
